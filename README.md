@@ -1,73 +1,129 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+Teste Técnico para Desenvolvedor Full-Stack DFCOM
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Como rodar
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+# Importante!
 
-## Description
+Para rodar o sistema completo você vai precisar ter a seguinte .env: 
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Installation
-
-```bash
-$ npm install
+```
+DATABASE_HOST='database-url-from-mongo'
 ```
 
-## Running the app
+Primeiro instale as dependencias do projeto:
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+npm install
+# ou
+yarn
+# ou
+pnpm i
+# ou
+bun i
 ```
 
-## Test
+Segundo, rode o projeto com:
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+npm run start
+# ou
+yarn start
+# ou
+pnpm start
+# ou
+bun start
 ```
 
-## Support
+## Descrição
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Este projeto é uma API simples que serve para gerenciar produtos. Abaixo estão as rotas disponíveis e um exemplo do modelo de produto.
 
-## Stay in touch
+## Modelo de Produto
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+```json
+{
+  "name": "teste",
+  "description": "description teste",
+  "price": "10 reais",
+  "category": "teste",
+  "stock": "10"
+}
+```
 
-## License
+## Rotas
 
-Nest is [MIT licensed](LICENSE).
+### 1. Obter todos os produtos
+
+- **Rota:** `GET /products`
+- **Descrição:** Retorna uma lista de todos os produtos.
+- **Exemplo de Requisição:**
+
+  ```bash
+  curl -X GET http://localhost:3333/products
+  ```
+
+### 2. Criar um novo produto
+
+- **Rota:** `POST /products`
+- **Descrição:** Cria um novo produto.
+- **Exemplo de Requisição:**
+
+  ```bash
+  curl -X POST http://localhost:3333/products \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "name": "novo produto",
+    "description": "descrição do novo produto",
+    "price": "20 reais",
+    "category": "nova categoria",
+    "stock": "15"
+  }'
+  ```
+
+### 3. Atualizar um produto
+
+- **Rota:** `PATCH /products/:id`
+- **Descrição:** Atualiza as informações de um produto existente.
+- **Exemplo de Requisição:**
+
+  ```bash
+  curl -X PATCH http://localhost:3333/products/1 \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "name": "produto atualizado",
+    "description": "descrição atualizada",
+    "price": "25 reais",
+    "category": "categoria atualizada",
+    "stock": "20"
+  }'
+  ```
+
+### 4. Obter um produto pelo ID
+
+- **Rota:** `GET /products/:id`
+- **Descrição:** Retorna os detalhes de um produto específico pelo seu ID.
+- **Exemplo de Requisição:**
+
+  ```bash
+  curl -X GET http://localhost:3333/products/1
+  ```
+
+### 5. Deletar um produto
+
+- **Rota:** `DELETE /products/:id`
+- **Descrição:** Deleta um produto pelo seu ID.
+- **Exemplo de Requisição:**
+
+  ```bash
+  curl -X DELETE http://localhost:3333/products/1
+  ```
+
+---
+
+<a href="https://www.linkedin.com/in/jovimoura10/" target="_blank" align="left" style="font-style: italic;">
+  Desenvolvido por John
+</a>
+
+<a href="https://jovimoura.vercel.app/" target="_blank" align="left" style="font-style: italic;">
+  Portfolio
+</a>

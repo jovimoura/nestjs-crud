@@ -6,7 +6,6 @@ import { Product, ProductSchema } from './schemas/product.schema';
 import { Connection, connect, Model } from "mongoose";
 import { ProductDTOStub } from '../../test/stubs/product.dto.stub';
 import { ProductAlreadyExists } from '../../test/stubs/product-already-exists.exception';
-import { mongoUri } from '../../src/services/mongo-uri';
 import { MongoMemoryServer } from 'mongodb-memory-server';
 
 describe('ProductsController', () => {

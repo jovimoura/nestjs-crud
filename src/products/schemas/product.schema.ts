@@ -22,6 +22,9 @@ export class Product {
 
   @Prop()
   stock: string;
+
+  @Prop()
+  createdAt: Date;
 }
 
 export const ProductSchema = SchemaFactory.createForClass(Product);

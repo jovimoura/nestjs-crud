@@ -118,6 +118,19 @@ Este projeto é uma API simples que serve para gerenciar produtos. Abaixo estão
   curl -X DELETE http://localhost:3333/products/1
   ```
 
+
+## Testes
+Para executar os testes, rode:
+
+```bash
+npm test
+# ou
+yarn test
+# ou
+pnpm test
+# ou
+bun test
+```
 ---
 
 <a href="https://www.linkedin.com/in/jovimoura10/" target="_blank" align="left" style="font-style: italic;">

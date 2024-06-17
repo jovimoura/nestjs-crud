@@ -124,6 +124,8 @@ Este projeto é uma API simples que serve para gerenciar produtos. Abaixo estão
   Desenvolvido por John
 </a>
 
+<br>
+
 <a href="https://jovimoura.vercel.app/" target="_blank" align="left" style="font-style: italic;">
   Portfolio
 </a>
